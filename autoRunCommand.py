@@ -11,9 +11,9 @@ if not os.path.isdir(sys.argv[3]):
     os.mkdir(sys.argv[3])
 
 for oneSite in targetList.readlines():
-    scanCommand = Command + " " + oneSite[:-1]
+    scanCommand = Command + oneSite[:-1]
     scanResult = os.popen("%s" %scanCommand).read()
-    resultName = oneSite.replace("/","").replace(":","").replace("\n","").replace("\r", "") + ".txt"
+    resultName = oneSite.replace("/","_").replace(":","").replace("\n","").replace("\r", "") + ".txt"
     makeResult = open(os.path.abspath(resultPath) + "//" + resultName, "w")
     makeResult.write(scanResult)
     makeResult.close()
